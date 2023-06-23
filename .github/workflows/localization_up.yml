@@ -1,0 +1,17 @@
+name: Localization Update
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  dispatch-update:
+    name: Dispatch Update
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: version-up
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.repository_owner }}/Localization
