@@ -15,4 +15,4 @@ jobs:
           event-type: version-up
           token: ${{ secrets.PAT }}
           repository: ${{ github.repository_owner }}/Localization
-          client-payload: '{ "ref": "${{ github.ref_name }}" }'
+          client-payload: '{ "ref": "${{ github.ref }}", "ref_name": "${{ github.ref_name }}" }'
