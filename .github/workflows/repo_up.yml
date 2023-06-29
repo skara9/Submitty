@@ -31,7 +31,10 @@ jobs:
             [Dependency] Bump ${{ github.event.client_payload.repo_name }}
             from ${{ steps.update-version.outputs.old_version }}
             to ${{ github.event.client_payload.tag }}
-          body: >
-            Bumps [${{ github.event.client_payload.repo_name }}](https://github.com/${{ github.event.client_payload.repo }})
-            from ${{ steps.update-version.outputs.old_version }}
-            to ${{ github.event.client_payload.tag }}.
+          body: "Bumps [${{ github.event.client_payload.repo_name }}]\
+                (https://github.com/${{ github.event.client_payload.repo }})
+                from ${{ steps.update-version.outputs.old_version }}
+                to ${{ github.event.client_payload.tag }}.\n\n---\n
+                [See release notes](https://github.com/\
+                ${{ github.event.client_payload.repo }}/releases/tag\
+                ${{ github.event.client_payload.tag }})"
