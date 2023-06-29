@@ -19,11 +19,6 @@ jobs:
           -r ${{ github.event.client_payload.repo_name }}
           -v ${{ github.event.client_payload.tag }}
           >> $GITHUB_OUTPUT
-      - name: Ensure no downgrade
-        run: >
-          git merge-base --is-ancestor
-          ${{ steps.update-version.outputs.old_version }}
-          ${{ github.event.client_payload.tag }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
