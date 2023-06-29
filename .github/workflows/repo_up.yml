@@ -36,5 +36,5 @@ jobs:
                 from ${{ steps.update-version.outputs.old_version }}
                 to ${{ github.event.client_payload.tag }}.\n\n---\n
                 [See release notes](https://github.com/\
-                ${{ github.event.client_payload.repo }}/releases/tag\
+                ${{ github.event.client_payload.repo }}/releases/tag/\
                 ${{ github.event.client_payload.tag }})"
