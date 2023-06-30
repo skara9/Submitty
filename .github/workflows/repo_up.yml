@@ -22,7 +22,6 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.PAT }}
           commit-message: >
             Update ${{ github.event.client_payload.repo_name }}
             to ${{ github.event.client_payload.tag }}
