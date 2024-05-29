@@ -15,5 +15,7 @@ jobs:
           fetch-depth: 0
       - name: Install virtualbox and vagrant
         run: brew install qemu vagrant
+      - name: Install plugin
+        run: vagrant plugin install vagrant-qemu
       - name: Vagrant Up
         run: vagrant up
