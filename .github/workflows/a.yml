@@ -18,4 +18,4 @@ jobs:
       - name: Install plugin
         run: vagrant plugin install vagrant-qemu
       - name: Vagrant Up
-        run: vagrant up
+        run: CI=1 vagrant up
