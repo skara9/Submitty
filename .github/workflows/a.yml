@@ -12,6 +12,6 @@ jobs:
       - name: Download ISO
         run: curl -O https://cdimage.ubuntu.com/releases/22.04/release/ubuntu-22.04.4-live-server-arm64.iso
       - name: Create IMG
-        run: qemu-img create -f qcow2 ubuntu22.qcow2 20G
+        run: qemu-img create -f qcow2 ubuntu22.img 20G
       - name: Start VM
-        run: qemu-system-aarch64 -m 1024 -cdrom ubuntu-22.04.4-live-server-arm64.iso -boot d -drive file=ubuntu22.qcow2,format=qcow2 -daemonize
+        run: qemu-system-aarch64 -m 1024 -cpu host -machine type=virt -nographic -smp 2 -cdrom ubuntu-22.04.4-live-server-arm64.iso -boot d -drive if=virtio,format=qcow2,file=ubuntu22.qcow2 -daemonize
