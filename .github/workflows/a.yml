@@ -14,4 +14,4 @@ jobs:
       - name: Create IMG
         run: qemu-img create -f qcow2 ubuntu22.img 20G
       - name: Start VM
-        run: qemu-system-aarch64 -m 1024 -cpu host -machine type=virt -nographic -smp 2 -cdrom ubuntu-22.04.4-live-server-arm64.iso -boot d -drive if=virtio,format=qcow2,file=ubuntu22.qcow2
+        run: qemu-system-aarch64 -m 1024 -cpu host -machine type=virt -nographic -smp 2 -cdrom ubuntu-22.04.4-live-server-arm64.iso -boot d -drive if=virtio,format=qcow2,file=ubuntu22.img
