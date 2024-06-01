@@ -3,19 +3,15 @@ name: TEST VM
 on:
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
   vagrant-up:
     runs-on: macos-14
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Install virtualbox and vagrant
-        run: brew install qemu vagrant
-      - name: Install plugin
-        run: vagrant plugin install vagrant-qemu
-      - name: Vagrant Up
-        run: CI=1 vagrant up
+      - name: Install QEMU
+        run: brew install qemu
+      - name: Download ISO
+        run: curl -O https://cdimage.ubuntu.com/releases/22.04/release/ubuntu-22.04.4-live-server-arm64.iso
+      - name: Create IMG
+        run: qemu-img create -f qcow2 ubuntu22.qcow2 20G
+      - name: Start VM
+        run: qemu-system-aarch64 -m 1024 -cdrom ubuntu-22.04.4-live-server-arm64.iso -boot d -drive file=ubuntu22.qcow2,format=qcow2 -daemonize
