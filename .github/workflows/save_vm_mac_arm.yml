@@ -16,6 +16,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Verify Chip
+        run: sysctl -n machdep.cpu.brand_string
+
       - name: Install Vagrant
         run: |
           brew tap hashicorp/tap
@@ -30,12 +33,7 @@ jobs:
       - name: Get latest version
         id: get-version
         run: |
-          TAG=$(git describe --tags --abbrev=0)
-          if ! [[ $TAG =~ ^v[0-9]{2}\.[0-9]{2}\.[0-9]{2}$ ]]; then
-            echo "Invalid tag name: '$TAG'"
-            exit 1
-          fi
-          echo "version=${TAG:1}" >> $GITHUB_OUTPUT
+          echo "version=2.0" >> $GITHUB_OUTPUT
 
       - name: Vagrant Up
         run: CI=1 vagrant up
