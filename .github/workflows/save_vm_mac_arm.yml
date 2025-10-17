@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   vagrant-up:
-    runs-on: macos-15-xlarge
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v5
         with:
